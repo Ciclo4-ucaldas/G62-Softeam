@@ -1,4 +1,5 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Servicio} from './servicio.model';
 
 @model()
 export class Recolector extends Entity {
@@ -15,6 +16,8 @@ export class Recolector extends Entity {
   })
   Carnet: string;
 
+  @hasMany(() => Servicio)
+  sus_servicios: Servicio[];
 
   constructor(data?: Partial<Recolector>) {
     super(data);
