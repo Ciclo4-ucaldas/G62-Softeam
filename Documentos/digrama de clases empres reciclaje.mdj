@@ -1170,7 +1170,7 @@
 											"top": 317,
 											"width": 95.01171875,
 											"height": 13,
-											"text": "+Nombre: String",
+											"text": "+Carnet: String",
 											"horizontalAlignment": 0
 										}
 									],
@@ -3071,7 +3071,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGERbYJ2/fCCZ0="
 							},
-							"name": "id"
+							"name": "id",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -3390,7 +3391,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGERcq0DPhOtxQ="
 							},
-							"name": "Nombre",
+							"name": "Carnet",
 							"type": "String"
 						}
 					]
