@@ -1,9 +1,9 @@
-import {ApplicationConfig, App} from './application';
+import {ApplicationConfig, BackendgeolifeApplication} from './application';
 
 export * from './application';
 
 export async function main(options: ApplicationConfig = {}) {
-  const app = new App(options);
+  const app = new BackendgeolifeApplication(options);
   await app.boot();
   await app.start();
 

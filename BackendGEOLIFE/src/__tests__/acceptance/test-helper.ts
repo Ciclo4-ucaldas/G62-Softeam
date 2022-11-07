@@ -1,4 +1,4 @@
-import {App} from '../..';
+import {BackendgeolifeApplication} from '../..';
 import {
   createRestAppClient,
   givenHttpServerConfig,
@@ -14,7 +14,7 @@ export async function setupApplication(): Promise<AppWithClient> {
     // port: +process.env.PORT,
   });
 
-  const app = new App({
+  const app = new BackendgeolifeApplication({
     rest: restConfig,
   });
 
@@ -27,6 +27,6 @@ export async function setupApplication(): Promise<AppWithClient> {
 }
 
 export interface AppWithClient {
-  app: App;
+  app: BackendgeolifeApplication;
   client: Client;
 }
