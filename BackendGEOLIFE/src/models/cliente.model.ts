@@ -1,5 +1,6 @@
-import {model, property} from '@loopback/repository';
+import {model, property, hasMany} from '@loopback/repository';
 import {Persona} from '.';
+import {Servicio} from './servicio.model';
 
 @model()
 export class Cliente extends Persona {
@@ -22,6 +23,8 @@ export class Cliente extends Persona {
   })
   email: string;
 
+  @hasMany(() => Servicio)
+  sus_servicios_agendados: Servicio[];
 
   constructor(data?: Partial<Cliente>) {
     super(data);

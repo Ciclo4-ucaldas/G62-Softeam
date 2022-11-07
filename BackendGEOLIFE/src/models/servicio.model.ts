@@ -26,6 +26,10 @@ export class Servicio extends Entity {
   })
   observaciones?: string;
 
+  @property({
+    type: 'string',
+  })
+  clienteId?: string;
 
   constructor(data?: Partial<Servicio>) {
     super(data);
