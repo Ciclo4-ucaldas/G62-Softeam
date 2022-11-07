@@ -30,6 +30,11 @@ export class Servicio extends Entity {
   @belongsTo(() => Cliente, {name: 'suCliente'})
   clienteId: string;
 
+  @property({
+    type: 'string',
+  })
+  recolectorId?: string;
+
   constructor(data?: Partial<Servicio>) {
     super(data);
   }
