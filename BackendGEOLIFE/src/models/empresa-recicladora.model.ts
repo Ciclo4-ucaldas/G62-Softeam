@@ -1,5 +1,6 @@
-import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Entity, model, property, hasMany, belongsTo} from '@loopback/repository';
 import {Recolector} from './recolector.model';
+import {Administrador} from './administrador.model';
 
 @model({settings: {strict: false}})
 export class EmpresaRecicladora extends Entity {
@@ -19,6 +20,9 @@ export class EmpresaRecicladora extends Entity {
 
   @hasMany(() => Recolector)
   su_RecolectSor: Recolector[];
+
+  @belongsTo(() => Administrador, {name: 'Su_administrador'})
+  administradorId: string;
   // Define well-known properties here
 
   // Indexer property to allow additional data
