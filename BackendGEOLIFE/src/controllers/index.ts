@@ -6,3 +6,4 @@ export * from './recolector-servicio.controller';
 export * from './empresa-recicladora-recolector.controller';
 export * from './recolector-empresa-recicladora.controller';
 export * from './empresa-recicladora-administrador.controller';
+export * from './administrador-empresa-recicladora.controller';
