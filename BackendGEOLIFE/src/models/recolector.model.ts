@@ -1,5 +1,6 @@
-import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Entity, model, property, hasMany, belongsTo} from '@loopback/repository';
 import {Servicio} from './servicio.model';
+import {EmpresaRecicladora} from './empresa-recicladora.model';
 
 @model()
 export class Recolector extends Entity {
@@ -18,6 +19,9 @@ export class Recolector extends Entity {
 
   @hasMany(() => Servicio)
   sus_servicios: Servicio[];
+
+  @belongsTo(() => EmpresaRecicladora, {name: 'Su_Empresa'})
+  empresaRecicladoraId: string;
 
   constructor(data?: Partial<Recolector>) {
     super(data);

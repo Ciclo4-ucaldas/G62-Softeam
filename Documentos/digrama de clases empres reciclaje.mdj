@@ -3220,6 +3220,7 @@
 								"_parent": {
 									"$ref": "AAAAAAGEU5jBIJiIV9c="
 								},
+								"name": "suRecolector",
 								"reference": {
 									"$ref": "AAAAAAGERcq0DPhOtxQ="
 								},
@@ -5720,16 +5721,17 @@
 									"model": {
 										"$ref": "AAAAAAGEU5jBIJiKFI4="
 									},
-									"visible": false,
 									"font": "Arial;13;0",
-									"left": 482,
-									"top": 344,
+									"left": 383,
+									"top": 376,
+									"width": 83.458984375,
 									"height": 13,
-									"alpha": -0.5235987755982988,
-									"distance": 30,
+									"alpha": 0.20104133848120442,
+									"distance": 85.5102333057278,
 									"hostEdge": {
 										"$ref": "AAAAAAGEU5jBIJiM/tY="
-									}
+									},
+									"text": "+suRecolector"
 								},
 								{
 									"_type": "EdgeLabelView",
