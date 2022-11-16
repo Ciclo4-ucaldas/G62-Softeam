@@ -1,11 +1,12 @@
 import {Entity, model, property, hasMany, belongsTo} from '@loopback/repository';
 import {Servicio} from './servicio.model';
 import {EmpresaRecicladora} from './empresa-recicladora.model';
+import { Persona } from './persona.model';
 
 
 
 @model()
-export class Recolector extends Entity {
+export class Recolector extends Persona {
   @property({
     type: 'string',
     id: true,
