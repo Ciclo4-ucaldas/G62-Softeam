@@ -20,15 +20,16 @@ import {
 } from '@loopback/rest';
 import {Administrador} from '../models';
 import {AdministradorRepository} from '../repositories';
-import { NotificacionService } from '../services';
+import { AutenticacionService, NotificacionService } from '../services';
 
 export class AdministradorController {
   constructor(
     @repository(AdministradorRepository)
     public administradorRepository : AdministradorRepository,
     @service(NotificacionService)
-    public servicioNotificacion :NotificacionService
-  
+    public servicioNotificacion :NotificacionService,
+    @service (AutenticacionService)
+    public servicioAutenticacion:AutenticacionService
     ) {}
 
   @post('/administradors')
@@ -48,12 +49,15 @@ export class AdministradorController {
       },
     })
     administrador: Omit<Administrador, 'id'>,
-  ): Promise<Administrador> {
+  ): Promise<Administrador> {  //el o any no me funciona
     let clave =this.servicioNotificacion.GenerarClave();
     let claveCifrada= this.servicioNotificacion.cifrarClave(clave);
     administrador.contrasena=claveCifrada
-    let admin=await this.servicioNotificacion.GenerarClave //verificar generar clave
-    
+    let admin= this.administradorRepository.create(administrador);
+    //let admin=await this.servicioNotificacion.generarToken() //verificar generar clave
+    Boolean enviadoEmail=this.servicioNotificacion.notificacionEmail();
+    Boolean enviadoSMS =this.servicioNotificacion.notificacionSMS();
+    if()
     return this.administradorRepository.create(administrador);
   }
 
