@@ -33,6 +33,7 @@ export class AutenticacionService {
         id:usuario.id,
         correo:usuario.usuario,
         nombres:usuario.Nombres,
+        rol:rol
 
       }
   
