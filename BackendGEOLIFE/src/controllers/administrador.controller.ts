@@ -17,6 +17,7 @@ import {
   del,
   requestBody,
   response,
+  HttpErrors,
 } from '@loopback/rest';
 import {Administrador} from '../models';
 import {AdministradorRepository} from '../repositories';
@@ -49,15 +50,28 @@ export class AdministradorController {
       },
     })
     administrador: Omit<Administrador, 'id'>,
-  ): Promise<Administrador> {  //el o any no me funciona
+  ): Promise<Administrador | any> {  //el o any no me funciona
     let clave =this.servicioNotificacion.GenerarClave();
     let claveCifrada= this.servicioNotificacion.cifrarClave(clave);
     administrador.contrasena=claveCifrada
     let admin= this.administradorRepository.create(administrador);
+
     //let admin=await this.servicioNotificacion.generarToken() //verificar generar clave
-    Boolean enviadoEmail=this.servicioNotificacion.notificacionEmail();
-    Boolean enviadoSMS =this.servicioNotificacion.notificacionSMS();
-    if()
+    let asunto="Registro En Plataforma Como Administrador"
+    let mensaje="Bienvenido a nuestras plataforma señor@"+administrador.nombres+" "+administrador.apellidos+" Su clave temporal es: "+administrador.contrasena+" y su usuario es: "+administrador.usuario
+    let enviadoEmail=this.servicioNotificacion.notificacionEmail(administrador.usuario,asunto,mensaje);
+    let enviadoSMS;
+    if (administrador.telefono){
+       enviadoSMS =this.servicioNotificacion.notificacionSMS(administrador.telefono,mensaje);
+    }else{
+       enviadoSMS=true;
+    }
+    
+    if(enviadoEmail&&enviadoSMS){
+      return admin
+    }else{
+      return new HttpErrors[500]("no se pudo crear el administrador")
+    }
     return this.administradorRepository.create(administrador);
   }
 
