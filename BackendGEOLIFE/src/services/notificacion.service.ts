@@ -20,8 +20,8 @@ export class NotificacionService {
     return claveCifrada
   }
   notificacionEmail(destino:string, asunto:string, mensaje:string){
-    fetch(Llaves.urlServiciosPython+ '/Email?correo_destino=${destino}&asunto=${asunto}&mensaje=${mensaje}')
-    .then((data.any)=>{
+    fetch(Llaves.urlServiciosPython+ `/Email?correo_destino=${destino}&asunto=${asunto}&mensaje=${mensaje}`)
+    .then((data:any)=>{
 
     }
   ).catch((error:any)=>{
@@ -31,8 +31,8 @@ export class NotificacionService {
    return true;
   }
   notificacionSMS(destino:string, mensaje:string ){
-    fetch(Llaves.urlServiciosPython+ '/sms?telefono=${destino}&mensaje=${mensaje}')//no me reconoce las variables
-    .then((data.any)=>{
+    fetch(Llaves.urlServiciosPython+ `/sms?telefono=${destino}&mensaje=${mensaje}`)//no me reconoce las variable
+    .then((data:any)=>{
 
    }
    ).catch((error:any)=>{
