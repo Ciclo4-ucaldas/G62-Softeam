@@ -30,7 +30,7 @@ export class AutenticacionService {
       rol =recol.constructor.name
       }
     }*/
-    let token=jwt.sing({
+    let token=jwt.sign({
       data:{
         id:usuario.id,
         correo:usuario.usuario,
