@@ -58,7 +58,7 @@ export class AdministradorController {
 
     //let admin=await this.servicioNotificacion.generarToken() //verificar generar clave
     let asunto="Registro En Plataforma Como Administrador"
-    let mensaje="Bienvenido a nuestras plataforma señor@"+administrador.nombres+" "+administrador.apellidos+" Su clave temporal es: "+administrador.contrasena+" y su usuario es: "+administrador.usuario
+    let mensaje="Bienvenido a nuestras plataforma señor@"+administrador.Nombres+" "+administrador.apellidos+" Su clave temporal es: "+administrador.contrasena+" y su usuario es: "+administrador.usuario
     let enviadoEmail=this.servicioNotificacion.notificacionEmail(administrador.usuario,asunto,mensaje);
     let enviadoSMS;
     if (administrador.telefono){
@@ -66,13 +66,13 @@ export class AdministradorController {
     }else{
        enviadoSMS=true;
     }
-    
+
     if(enviadoEmail&&enviadoSMS){
       return admin
     }else{
       return new HttpErrors[500]("no se pudo crear el administrador")
     }
-    return this.administradorRepository.create(administrador);
+
   }
 
   @get('/administradors/count')
