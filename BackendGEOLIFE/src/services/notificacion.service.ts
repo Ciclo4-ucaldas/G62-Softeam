@@ -2,7 +2,7 @@ import {injectable, /* inject, */ BindingScope} from '@loopback/core';
 import { Llaves } from '../config/Llaves';
 const generator =require("password-generator");
 const cryptoJS=require("crypto-js");
-const fetch= require("fetch");
+const fetch= require("node-fetch");
 @injectable({scope: BindingScope.TRANSIENT})
 export class NotificacionService {
   constructor(/* Add @inject to inject parameters */) {}
