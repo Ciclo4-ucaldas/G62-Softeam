@@ -1,3 +1,4 @@
+import {service} from '@loopback/core';
 import {
   Count,
   CountSchema,
@@ -16,14 +17,18 @@ import {
   del,
   requestBody,
   response,
+  HttpErrors,
 } from '@loopback/rest';
 import {Cliente} from '../models';
 import {ClienteRepository} from '../repositories';
+import {NotificacionService} from '../services';
 
 export class ClienteController {
   constructor(
     @repository(ClienteRepository)
     public clienteRepository : ClienteRepository,
+    @service(NotificacionService)
+    public servicioNotificacion :NotificacionService
   ) {}
 
   @post('/clientes')
@@ -43,8 +48,28 @@ export class ClienteController {
       },
     })
     cliente: Omit<Cliente, 'id'>,
-  ): Promise<Cliente> {
-    return this.clienteRepository.create(cliente);
+  ): Promise<Cliente | any > {
+    let clave =this.servicioNotificacion.GenerarClave();
+    let claveCifrada= this.servicioNotificacion.cifrarClave(clave);
+    cliente.contrasena=claveCifrada
+    let client= this.clienteRepository.create(cliente);
+
+    //let admin=await this.servicioNotificacion.generarToken() //verificar generar clave
+    let asunto="Registro En Plataforma Como Administrador"
+    let mensaje="Bienvenido a nuestras plataforma señor@"+cliente.Nombres+" "+cliente.apellidos+" Su clave temporal es: "+cliente.contrasena+" y su usuario es: "+cliente.usuario
+    let enviadoEmail=this.servicioNotificacion.notificacionEmail(cliente.usuario,asunto,mensaje);
+    let enviadoSMS;
+    if (cliente.telefono){
+       enviadoSMS =this.servicioNotificacion.notificacionSMS(cliente.telefono,mensaje);
+    }else{
+       enviadoSMS=true;
+    }
+
+    if(enviadoEmail&&enviadoSMS){
+      return client
+    }else{
+      return new HttpErrors[500]("no se pudo crear el administrador")
+    }
   }
 
   @get('/clientes/count')

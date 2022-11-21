@@ -1,8 +1,9 @@
 import {Entity, model, property, hasOne} from '@loopback/repository';
 import {EmpresaRecicladora} from './empresa-recicladora.model';
+import { Persona } from './persona.model';
 
 @model({settings: {strict: false}})
-export class Administrador extends Entity {
+export class Administrador extends Persona {
   @property({
     type: 'number',
     required: true,
