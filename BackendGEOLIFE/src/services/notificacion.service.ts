@@ -20,7 +20,7 @@ export class NotificacionService {
     return claveCifrada
   }
   notificacionEmail(destino:string, asunto:string, mensaje:string){
-    fetch(Llaves.urlServiciosPython+ `/Email?correo_destino=${destino}&asunto=${asunto}&mensaje=${mensaje}`)
+    fetch(Llaves.urlServiciosPython+ `/email?correo_destino=${destino}&asunto=${asunto}&mensaje=${mensaje}`)
     .then((data:any)=>{
 
     }
