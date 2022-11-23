@@ -58,7 +58,7 @@ export class AdministradorController {
 
     //let admin=await this.servicioNotificacion.generarToken() //verificar generar clave
     let asunto="Registro En Plataforma Como Administrador"
-    let mensaje="Bienvenido a nuestras plataforma señor@"+administrador.Nombres+" "+administrador.apellidos+" Su clave temporal es: "+administrador.contrasena+" y su usuario es: "+administrador.usuario
+    let mensaje="Bienvenido a nuestras plataforma señor@"+administrador.Nombres+" "+administrador.apellidos+" Su clave temporal es: "+clave+" y su usuario es: "+administrador.usuario
     let enviadoEmail=this.servicioNotificacion.notificacionEmail(administrador.usuario,asunto,mensaje);
     let enviadoSMS;
     if (administrador.telefono){

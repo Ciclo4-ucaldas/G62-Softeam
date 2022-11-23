@@ -39,7 +39,9 @@ export class NotificacionService {
     console.log(error)
 
    }
-   )}
-   
+
+   )
+   return true;
+  }
 
   }
