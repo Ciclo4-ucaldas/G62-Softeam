@@ -1,0 +1,11 @@
+:root{
+    --green: hsl(162, 45%, 56%);
+    --plomo: hsl(162, 2%, 56%);
+    --blue: hsl(220, 85%, 57%);
+    --violet: hsl(272, 92%, 32%);
+    --text-white: hsl(0, 0%, 100%);
+    --text-light-gray: hsl(0, 0%, 90%);
+    --body-bg-color: hsla(0, 0%, 100%, 0.25);
+    --blur: blur(10px);
+    --button-hover-color:  hsla(0, 0%, 0%, 0.3);
+}
